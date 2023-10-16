@@ -1,3 +1,4 @@
+#check if we can place docdb subnet group in the end.
 resource "aws_docdb_subnet_group" "main" {
   name       = "${local.name_prefix}-subnet-group"
   subnet_ids = var.subnet_ids
@@ -54,5 +55,5 @@ resource "aws_docdb_cluster" "main" {
   vpc_security_group_ids = [aws_security_group.main.id]
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.main.name
   tags = merge(local.tags, {Name = "${local.name_prefix}-cluster" })
-  engine_version = var.engine_version
-}
+  #engine_version = var.engine_version
+ }
